@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/昨天是情人节/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/post防止重复点击的办法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -248,7 +248,138 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/15/昨天是情人节/" itemprop="url">昨天是情人节</a></h1>
+                <a class="post-title-link" href="/2019/02/15/post防止重复点击的办法/" itemprop="url">post防止重复点击的办法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-15T12:48:10+08:00">
+                2019-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、旗帜"><a href="#1、旗帜" class="headerlink" title="1、旗帜"></a>1、旗帜</h3><p>​    可以给函数添加一个flag(旗帜)，初始值为true,第一次点击将其变为false,点击事件的执行需要判断这个开关是否为true，为true执行,false不执行 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span> = <span class="string">"myClick()"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">    	<span class="comment">//code .....</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    为防止点击过快，还可以添加一个定时器，在一定的时间后，自动将flag变为true</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//code ...</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">         <span class="comment">//定时器,点击后相隔多长时间可以再次执行</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、设置data属性"><a href="#2、设置data属性" class="headerlink" title="2、设置data属性"></a>2、设置data属性</h3><p>​    微信小程序中，通过data属性设置一个参数forbid（禁止）,这个参数可以随意定义，初始值为false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view bindtap = &apos;myClick&apos;&gt;点击&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        forbid:<span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    myClick：<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>,</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">        	forbid:<span class="literal">true</span></span><br><span class="line">   		&#125;)</span><br><span class="line">    	<span class="comment">//code ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="3、遮罩层"><a href="#3、遮罩层" class="headerlink" title="3、遮罩层"></a>3、遮罩层</h3><p>​    通过设置遮罩层，当按钮第一次被点击的时候，弹出一个遮罩层遮挡按钮被再次点击，可通过三目运算符来控制是否显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&apos;btn&apos; bindtap = &apos;myClick&apos;&gt;点击&lt;/view&gt;</span><br><span class="line">&lt;view class=&apos;shade&apos; style=&apos;display:&#123;&#123;hide&#125;&#125;&apos;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">view</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">200</span>rpx;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">200</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.btn</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.shade</span>&#123;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</span><br><span class="line">    <span class="comment">/* 遮罩的位置要和按钮的位置重叠 */</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        hide:<span class="string">'none'</span></span><br><span class="line">    &#125;</span><br><span class="line">     myClick：<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>,</span><br><span class="line">        <span class="keyword">let</span> show = that.data.hide == <span class="string">'none'</span> ? <span class="string">'block'</span> : <span class="string">'none'</span>,</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">            hide:show</span><br><span class="line">        &#125;)</span><br><span class="line">    	<span class="comment">//code ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/防止重复点击的方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/15/防止重复点击的方法/" itemprop="url">昨天是情人节</a></h1>
         
 
         <div class="post-meta">
@@ -300,7 +431,19 @@
       
         
           
-            
+            <h3 id="1、旗帜"><a href="#1、旗帜" class="headerlink" title="1、旗帜"></a>1、旗帜</h3><p>​    可以给函数添加一个flag(旗帜)，初始值为true,第一次点击将其变为false,点击事件的执行需要判断这个开关是否为true，为true执行,false不执行 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span> = <span class="string">"myClick()"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">    	<span class="comment">//code .....</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    为防止点击过快，还可以添加一个定时器，在一定的时间后，自动将flag变为true</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> flag = <span class="literal">true</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//code ...</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">         <span class="comment">//定时器,点击后相隔多长时间可以再次执行</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、设置data属性"><a href="#2、设置data属性" class="headerlink" title="2、设置data属性"></a>2、设置data属性</h3><p>​    微信小程序中，通过data属性设置一个参数forbid（禁止）,这个参数可以随意定义，初始值为false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view bindtap = &apos;myClick&apos;&gt;点击&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        forbid:<span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    myClick：<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>,</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">        	forbid:<span class="literal">true</span></span><br><span class="line">   		&#125;)</span><br><span class="line">    	<span class="comment">//code ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="3、遮罩层"><a href="#3、遮罩层" class="headerlink" title="3、遮罩层"></a>3、遮罩层</h3><p>​    通过设置遮罩层，当按钮第一次被点击的时候，弹出一个遮罩层遮挡按钮被再次点击，可通过三目运算符来控制是否显示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&apos;btn&apos; bindtap = &apos;myClick&apos;&gt;点击&lt;/view&gt;</span><br><span class="line">&lt;view class=&apos;shade&apos; style=&apos;display:&#123;&#123;hide&#125;&#125;&apos;&gt;&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">view</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">200</span>rpx;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">200</span>rpx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.btn</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.shade</span>&#123;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">999</span>;</span><br><span class="line">    <span class="comment">/* 遮罩的位置要和按钮的位置重叠 */</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">page(&#123;</span><br><span class="line">    data:&#123;</span><br><span class="line">        hide:<span class="string">'none'</span></span><br><span class="line">    &#125;</span><br><span class="line">     myClick：<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> that = <span class="keyword">this</span>,</span><br><span class="line">        <span class="keyword">let</span> show = that.data.hide == <span class="string">'none'</span> ? <span class="string">'block'</span> : <span class="string">'none'</span>,</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">            hide:show</span><br><span class="line">        &#125;)</span><br><span class="line">    	<span class="comment">//code ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -628,7 +771,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -636,6 +779,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
